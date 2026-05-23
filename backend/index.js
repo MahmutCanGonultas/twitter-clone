@@ -9,7 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const authRoutes = require('./routes/auth');
+const tweetRoutes = require('./routes/tweets');
+
 app.use('/auth', authRoutes);
+app.use('/tweets', tweetRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Server is runnig' });
