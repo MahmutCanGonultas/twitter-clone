@@ -1,46 +1,46 @@
 # Twitter Clone
 
-Full-stack Twitter benzeri bir uygulama. Backend Node.js/Express, frontend React ile yazıldı. Temel sosyal medya işlevleri mevcut: tweet atma, beğenme, takip etme.
+A full-stack Twitter-like app built with Node.js/Express on the backend and React on the frontend. Covers the core social features: posting tweets, liking, and following other users.
 
 ---
 
-## Teknolojiler
+## Stack
 
 **Backend**
 - Node.js + Express
-- PostgreSQL (`pg` kütüphanesi)
-- JWT ile kimlik doğrulama
-- bcrypt ile şifre hashleme
+- PostgreSQL (`pg`)
+- JWT authentication
+- bcrypt for password hashing
 
 **Frontend**
 - React 19 + Vite
 - React Router v7
-- TanStack Query (data fetching ve cache)
+- TanStack Query (data fetching & caching)
 - Axios
 
 ---
 
-## Özellikler
+## Features
 
-- Kayıt ve giriş (JWT tabanlı)
-- Tweet oluşturma ve silme
-- Tweet beğenme / beğeniyi geri alma
-- Kullanıcı takip etme / takibi bırakma
-- Profil sayfası (kullanıcının tweetleri)
-- Responsive tasarım, dark mode desteği
+- Register and login (JWT-based sessions)
+- Post and delete tweets
+- Like / unlike tweets
+- Follow / unfollow users
+- Profile pages with user's tweet history
+- Responsive layout with dark mode support
 
 ---
 
-## Kurulum
+## Setup
 
-### Gereksinimler
+### Requirements
 
 - Node.js 18+
 - PostgreSQL
 
-### Veritabanı
+### Database
 
-PostgreSQL'de `twitter_clone` adında bir veritabanı oluşturup şu tabloları ekle:
+Create a database called `twitter_clone` and run the following:
 
 ```sql
 CREATE TABLE users (
@@ -77,7 +77,7 @@ cd backend
 npm install
 ```
 
-`backend/.env` dosyası oluştur:
+Create a `backend/.env` file:
 
 ```
 PORT=3000
@@ -85,8 +85,8 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=twitter_clone
 DB_USER=postgres
-DB_PASSWORD=sifren
-JWT_SECRET=istedigin_bir_sey
+DB_PASSWORD=your_password
+JWT_SECRET=whatever_you_want
 ```
 
 ```bash
@@ -101,30 +101,30 @@ npm install
 npm run dev
 ```
 
-Tarayıcıda `http://localhost:5173` aç.
+Open `http://localhost:5173` in your browser.
 
 ---
 
 ## API Endpoints
 
-| Method | Endpoint | Açıklama |
-|--------|----------|----------|
-| POST | `/auth/register` | Kayıt ol |
-| POST | `/auth/login` | Giriş yap |
-| GET | `/auth/me` | Mevcut kullanıcı |
-| GET | `/tweets` | Tüm tweetler |
-| POST | `/tweets` | Tweet at |
-| DELETE | `/tweets/:id` | Tweet sil |
-| POST | `/likes/:tweetId` | Beğen |
-| DELETE | `/likes/:tweetId` | Beğeniyi kaldır |
-| POST | `/follows/:userId` | Takip et |
-| DELETE | `/follows/:userId` | Takibi bırak |
-| GET | `/users/:username` | Kullanıcı profili |
-| GET | `/users/:username/tweets` | Kullanıcının tweetleri |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/auth/register` | Create account |
+| POST | `/auth/login` | Login |
+| GET | `/auth/me` | Current user info |
+| GET | `/tweets` | Get all tweets |
+| POST | `/tweets` | Post a tweet |
+| DELETE | `/tweets/:id` | Delete a tweet |
+| POST | `/likes/:tweetId` | Like a tweet |
+| DELETE | `/likes/:tweetId` | Unlike a tweet |
+| POST | `/follows/:userId` | Follow a user |
+| DELETE | `/follows/:userId` | Unfollow a user |
+| GET | `/users/:username` | Get user profile |
+| GET | `/users/:username/tweets` | Get user's tweets |
 
 ---
 
-## Proje Yapısı
+## Project Structure
 
 ```
 twitter-project/
