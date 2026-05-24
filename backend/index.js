@@ -12,11 +12,13 @@ const authRoutes = require('./routes/auth');
 const tweetRoutes = require('./routes/tweets');
 const followRoutes = require('./routes/follows');
 const likeRoutes = require('./routes/likes');
+const userRoutes = require('./routes/users');
 
 app.use('/auth', authRoutes);
 app.use('/tweets', tweetRoutes);
 app.use('/follows', followRoutes);
 app.use('/likes', likeRoutes);
+app.use('/users', userRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Server is runnig' });
