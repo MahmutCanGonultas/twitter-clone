@@ -10,9 +10,13 @@ app.use(cors());
 app.use(express.json());
 const authRoutes = require('./routes/auth');
 const tweetRoutes = require('./routes/tweets');
+const followRoutes = require('./routes/follows');
+const likeRoutes = require('./routes/likes');
 
 app.use('/auth', authRoutes);
 app.use('/tweets', tweetRoutes);
+app.use('/follows', followRoutes);
+app.use('/likes', likeRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Server is runnig' });
