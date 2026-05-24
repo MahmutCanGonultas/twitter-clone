@@ -21,9 +21,19 @@ router.post('/', authMiddleware, async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const result = await pool.query(
-      'SELECT * FROM tweets ORDER BY created_at DESC',
-    );
+    const result = await pool.query(`
+  SELECT
+    tweets.id,
+    tweets.content,
+    tweets.created_at,
+    users.username,
+    COUNT(likes.tweet_id)::INTEGER AS like_count
+  FROM tweets
+  JOIN users ON tweets.user_id = users.id
+  LEFT JOIN likes ON likes.tweet_id = tweets.id
+  GROUP BY tweets.id, users.username
+  ORDER BY tweets.created_at DESC
+`);
     res.json({ tweets: result.rows });
   } catch (err) {
     res.status(500).json({ error: err.message });
